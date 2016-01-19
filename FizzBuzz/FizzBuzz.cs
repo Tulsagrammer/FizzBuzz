@@ -44,9 +44,15 @@ namespace FizzBuzz
                 Pause(@"Yo, hoser! How many iterations of each test?");
                 return;
             }
+            if (args.Count() < 3)
+            {
+                Pause(@"Yo, hoser! What is the plugin directory?");
+                return;
+            }
 
-            var upperLimit = Convert.ToInt32(args[0]);
-            var maxLoops   = Convert.ToInt32(args[1]);
+            var upperLimit  = Convert.ToInt32(args[0]);
+            var maxLoops    = Convert.ToInt32(args[1]);
+            var pluginDir = args[2];
 
             // Collect all of the output writers built into ourself.
             var type = typeof(IFizzBuzzWriter);
@@ -56,7 +62,7 @@ namespace FizzBuzz
                 .ToList();
 
             // Now collect output writers that are supplied as plugin modules.
-            var dInfo = new DirectoryInfo(Properties.Settings.Default.PluginFolder);
+            var dInfo = new DirectoryInfo(pluginDir);
             var files = dInfo.GetFiles("*.dll");
             if (files.Any())
                 foreach (FileInfo file in files)
