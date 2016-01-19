@@ -54,28 +54,35 @@ namespace FizzBuzz
             var maxLoops    = Convert.ToInt32(args[1]);
             var pluginDir = args[2];
 
-            // Collect all of the output writers built into ourself.
-            var type = typeof(IFizzBuzzWriter);
-            var typeList = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(s => s.GetTypes())
-                .Where(p => type.IsAssignableFrom(p) && p.IsClass)
-                .ToList();
+            try
+            {
+                // Collect all of the output writers built into ourself.
+                var type = typeof(IFizzBuzzWriter);
+                var typeList = AppDomain.CurrentDomain.GetAssemblies()
+                    .SelectMany(s => s.GetTypes())
+                    .Where(p => type.IsAssignableFrom(p) && p.IsClass)
+                    .ToList();
 
-            // Now collect output writers that are supplied as plugin modules.
-            var dInfo = new DirectoryInfo(pluginDir);
-            var files = dInfo.GetFiles("*.dll");
-            if (files.Any())
-                foreach (FileInfo file in files)
-                {
-                    var pluginTypes = Assembly.LoadFile(file.FullName)
-                        .GetTypes().Where(p => type.IsAssignableFrom(p) && p.IsClass);
-                    foreach (var pluginType in pluginTypes)
-                        typeList.Add(pluginType);
-                }
+                // Now collect output writers that are supplied as plugin modules.
+                var dInfo = new DirectoryInfo(pluginDir);
+                var files = dInfo.GetFiles("*.dll");
+                if (files.Any())
+                    foreach (FileInfo file in files)
+                    {
+                        var pluginTypes = Assembly.LoadFile(file.FullName)
+                            .GetTypes().Where(p => type.IsAssignableFrom(p) && p.IsClass);
+                        foreach (var pluginType in pluginTypes)
+                            typeList.Add(pluginType);
+                    }
 
-            // Invoke each writer object to produce some data!
-            foreach (var writerType in typeList)
-                ((IFizzBuzzWriter) Activator.CreateInstance(writerType)).Run(upperLimit, maxLoops);
+                // Invoke each writer object to produce some data!
+                foreach (var writerType in typeList)
+                    ((IFizzBuzzWriter)Activator.CreateInstance(writerType)).Run(upperLimit, maxLoops);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: {0}", e.Message);
+            }
 
             Pause("");
         }
