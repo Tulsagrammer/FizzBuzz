@@ -22,14 +22,5 @@ namespace FizzBuzz.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Eric\\Documents\\Visual Studio 2015\\Projects\\FizzBuzz\\Plugins")]
-        public string PluginFolder {
-            get {
-                return ((string)(this["PluginFolder"]));
-            }
-        }
     }
 }

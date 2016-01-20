@@ -1,9 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FizzBuzz.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="PluginFolder" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Users\Eric\Documents\Visual Studio 2015\Projects\FizzBuzz\Plugins</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>
