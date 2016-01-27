@@ -33,8 +33,16 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
+            new Program().Run(args);
+        }
+    }
+
+    public class Program
+    {
+        public void Run(string[] args)
+        {
             // Check for presence of command line parameters.
-            if (! args.Any())
+            if (!args.Any())
             {
                 Pause(@"Yo, hoser! What's the upper range to test?");
                 return;
@@ -50,8 +58,8 @@ namespace FizzBuzz
                 return;
             }
 
-            var upperLimit  = Convert.ToInt32(args[0]);
-            var maxLoops    = Convert.ToInt32(args[1]);
+            var upperLimit = Convert.ToInt32(args[0]);
+            var maxLoops = Convert.ToInt32(args[1]);
             var pluginDir = args[2];
 
             try
