@@ -1,7 +1,11 @@
 using System;
+using System.ComponentModel.Composition;
+
 
 namespace FizzBuzz
 {
+    [Export(typeof(IFizzBuzzWriter))]
+    [ExportMetadata("Description","Console Writer")]
     public class ConsoleOutput : IFizzBuzzDelegate, IFizzBuzzWriter
     {
         private int _upperLimit;

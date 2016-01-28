@@ -12,9 +12,6 @@ divisible by BOTH 3 and 5.
 Using this phenomena, we can easily construct a Fizz Buzz program
 containing NO conditionals.
 
-Useful tutorial for MEF:
-http://www.codeproject.com/Articles/376033/From-Zero-to-Proficient-with-MEF
-
 */
 
 
@@ -36,26 +33,13 @@ namespace FizzBuzz
 {
     class FizzBuzz
     {
+        //[ImportMany]
+        //static IEnumerable<Lazy<IFizzBuzzWriter, IFizzBuzzWriterMetadata>> writers;
+
         static void Main(string[] args)
         {
-            new Program().Run(args);
-        }
-    }
-
-    public class Program
-    {
-#if MEF
-        [ImportMany]
-        IEnumerable<Lazy<IFizzBuzzWriter, IFizzBuzzWriterMetadata>> writers;
-        [ImportMany]
-        IEnumerable<Lazy<IDummy, IDummyMetadata>> dummies;
-#endif
-
-        public void Run(string[] args)
-        {
-            #region Parameter validation and setup
             // Check for presence of command line parameters.
-            if (!args.Any())
+            if (! args.Any())
             {
                 Pause(@"Yo, hoser! What's the upper range to test?");
                 return;
@@ -71,13 +55,12 @@ namespace FizzBuzz
                 return;
             }
 
-            var upperLimit = Convert.ToInt32(args[0]);
-            var maxLoops = Convert.ToInt32(args[1]);
+            var upperLimit  = Convert.ToInt32(args[0]);
+            var maxLoops    = Convert.ToInt32(args[1]);
             var pluginDir = args[2];
-            #endregion
 
             #region Reflection-based logic
-#if REFLECTION
+#if Reflection
             try
             {
                 // Collect all of the output writers built into ourself.
@@ -105,35 +88,30 @@ namespace FizzBuzz
             }
             catch (Exception e)
             {
-                Pause(string.Format("Exception: {0}", e.Message));
+                Console.WriteLine("Exception: {0}", e.Message);
             }
 #endif
             #endregion
 
             #region MEF-based logic
 #if MEF
+            var catalog = new AggregateCatalog();
+            catalog.Catalogs.Add(new AssemblyCatalog(typeof(FizzBuzz).Assembly));
+            var container = new CompositionContainer(catalog);
+            var writers3 = new Writers();
+
+            //Fill the imports of this object
             try
             {
-                var catalog = new AggregateCatalog();
-                catalog.Catalogs.Add(new AssemblyCatalog(typeof(FizzBuzz).Assembly));
-                catalog.Catalogs.Add(new DirectoryCatalog(pluginDir));
-
-                using (var container = new CompositionContainer(catalog))
-                {
-                    container.ComposeParts(this);
-
-                    // Invoke each writer object to produce some data!
-                    foreach (Lazy<IFizzBuzzWriter, IFizzBuzzWriterMetadata> w in writers)
-                        w.Value.Run(upperLimit, maxLoops);
-                    // Invoke our dummy function(s) just for fun!
-                    foreach (Lazy<IDummy, IDummyMetadata> d in dummies)
-                        d.Value.DummyFunction();
-                }
+                container.ComposeParts(writers3.writers);
             }
-            catch (Exception exception)
+            catch (CompositionException compositionException)
             {
-                Pause(exception.ToString());
+                Pause(compositionException.ToString());
             }
+
+            //foreach (Lazy<IFizzBuzzWriter, IFizzBuzzWriterMetadata> w in writers)
+            //    Pause(w.Metadata.ToString());
 #endif
             #endregion
 
@@ -147,4 +125,11 @@ namespace FizzBuzz
             Console.ReadKey(true);
         }
     }
+
+    class Writers
+    {
+        [ImportMany]
+        public IEnumerable<Lazy<IFizzBuzzWriter, IFizzBuzzWriterMetadata>> writers { get; set; }
+    }
 }
+
