@@ -15,6 +15,18 @@ containing NO conditionals.
 Useful tutorial for MEF:
 http://www.codeproject.com/Articles/376033/From-Zero-to-Proficient-with-MEF
 
+Command line usage:
+
+    fizzbuzz high count [plugin_dir]
+
+    Where
+        high = high end of range to be tested
+        count = number of times the tests are to be run
+        plugin_dir = (optional) directory containing plugins
+
+    Example
+        fizzbuzz 20 1
+
 */
 
 
@@ -53,6 +65,8 @@ namespace FizzBuzz
 
         public void Run(string[] args)
         {
+            string pluginDir;
+
             #region Parameter validation and setup
             // Check for presence of command line parameters.
             if (!args.Any())
@@ -65,15 +79,14 @@ namespace FizzBuzz
                 Pause(@"Yo, hoser! How many iterations of each test?");
                 return;
             }
-            if (args.Count() < 3)
-            {
-                Pause(@"Yo, hoser! What is the plugin directory?");
-                return;
-            }
+
+            if (args.Count() > 2)
+                pluginDir = args[2];
+            else
+                pluginDir = @"..\..\..\Plugins";
 
             var upperLimit = Convert.ToInt32(args[0]);
             var maxLoops = Convert.ToInt32(args[1]);
-            var pluginDir = args[2];
             #endregion
 
             #region Reflection-based logic
