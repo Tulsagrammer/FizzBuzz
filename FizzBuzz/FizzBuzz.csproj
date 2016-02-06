@@ -65,9 +65,9 @@
       <Project>{40a4cc49-4cdf-429f-b88b-53b5eb4a7639}</Project>
       <Name>Engine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IDummy\IDummy.csproj">
-      <Project>{75aaa5e9-bdae-4eab-ad68-8d8452211256}</Project>
-      <Name>IDummy</Name>
+    <ProjectReference Include="..\IFizzBuzzAlgorithm\IFizzBuzzAlgorithm.csproj">
+      <Project>{0366b755-b4cd-414e-8f19-2619b373b843}</Project>
+      <Name>IFizzBuzzAlgorithm</Name>
     </ProjectReference>
     <ProjectReference Include="..\IFizzBuzzDelegate\IFizzBuzzDelegate.csproj">
       <Project>{c1cef614-302c-47b7-82ba-d3e54e1338e0}</Project>

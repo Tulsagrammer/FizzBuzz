@@ -44,6 +44,12 @@
     <Compile Include="IFizzBuzzWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IFizzBuzzDelegate\IFizzBuzzDelegate.csproj">
+      <Project>{c1cef614-302c-47b7-82ba-d3e54e1338e0}</Project>
+      <Name>IFizzBuzzDelegate</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

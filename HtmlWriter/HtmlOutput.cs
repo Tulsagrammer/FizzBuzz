@@ -11,7 +11,7 @@ namespace FizzBuzz
         private int _upperLimit;
         private int _maxLoops;
 
-        public void Run(int upperLimit, int maxLoops)
+        public void Run(int upperLimit, int maxLoops, Action<int, int, IFizzBuzzDelegate> run)
         {
             _upperLimit = upperLimit;
             _maxLoops = maxLoops;
@@ -23,11 +23,10 @@ namespace FizzBuzz
             Console.WriteLine(@"</head>");
             Console.WriteLine(@"<body>");
 
-            new Engine().Run(upperLimit, maxLoops, this);
+            run(upperLimit, maxLoops, this);
 
             Console.WriteLine(@"</body>");
             Console.WriteLine(@"</html>");
-
         }
 
         public void TestStart(string testFunction)
