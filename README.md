@@ -30,10 +30,13 @@ components:
 
 FizzBuzz
     The overall system driver
+
 Engine
     A tiny little framework for executing FizzBuzz algorithms and
     collecting basic performance measurements.
+
 Algorithm Plugins
     Implement specific FizzBuzz algorithms as plugins to the Engine.
+
 Writer Plugins
     Generate output in various formats as plugins to FizzBuzz.
