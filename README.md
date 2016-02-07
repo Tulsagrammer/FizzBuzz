@@ -25,6 +25,10 @@ FizzBuzz2. But this change would require some major restructuring of the
 solution; not knowing how Git would handle new and relocated files, I
 created a brand new project -- this one, FizzBuzz!
 
+The initial version sucessfully demonstrated Reflection techniques to
+assemble the system from plugins. Another refactoring has lead to the
+current version which uses MEP as the driver for assembling the plugins.
+
 FizzBuzz consists of four major components:
 
 FizzBuzz: The overall system driver. This should be the first project
