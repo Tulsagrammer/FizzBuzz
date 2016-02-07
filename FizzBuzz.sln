@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFizzBuzzDelegate", "IFizzB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csproj", "{40A4CC49-4CDF-429F-B88B-53B5EB4A7639}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlWriter", "HtmlWriter\HtmlWriter.csproj", "{F60244FE-315E-4DB7-A59E-20AD05FD9324}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriterHtml", "HtmlWriter\WriterHtml.csproj", "{F60244FE-315E-4DB7-A59E-20AD05FD9324}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFizzBuzzAlgorithm", "IFizzBuzzAlgorithm\IFizzBuzzAlgorithm.csproj", "{0366B755-B4CD-414E-8F19-2619B373B843}"
 EndProject
