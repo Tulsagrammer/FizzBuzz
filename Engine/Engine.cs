@@ -26,7 +26,7 @@ namespace FizzBuzz
             _maxLoops   = maxLoops;
             _driver     = driver;
 
-            foreach (Lazy<IFizzBuzzAlgorithm, IFizzBuzzAlgorithmMetadata> a in Algorithms)
+            foreach (var a in Algorithms)
                 TestRunner(a.Value.Run, a.Metadata.Description.ToString());
 
             driver.ResultsStart();

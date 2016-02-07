@@ -23,7 +23,7 @@ namespace FizzBuzz
         }
     }
 
-#if true
+
     [Export(typeof(IFizzBuzzAlgorithm))]
     [ExportMetadata("Description", "Erics Fine Solution #2")]
     public class EricAlgorithm2 : IFizzBuzzAlgorithm
@@ -45,5 +45,4 @@ namespace FizzBuzz
                 returnResult(i, String.Format(Tags2[TagsIndex[i % 3, i % 5]], i));
         }
     }
-#endif
 }
