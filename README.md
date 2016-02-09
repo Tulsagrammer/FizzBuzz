@@ -1,3 +1,5 @@
+Managed Extensibility Framework Example
+
 A long time ago in a galaxy far, far away ... well, maybe not that long
 ago: early 2015 to be a little more specific. I had some e-mail exchange
 with an acquaintance regarding the "FizzBuzz" algorithm that some
@@ -27,7 +29,7 @@ created a brand new project -- this one, FizzBuzz!
 
 The initial version sucessfully demonstrated Reflection techniques to
 assemble the system from plugins. Another refactoring has lead to the
-current version which uses MEP as the driver for assembling the plugins.
+current version which uses MEF as the driver for assembling the plugins.
 
 FizzBuzz consists of four major components:
 
@@ -44,3 +46,8 @@ names beginning with "Algo".
 
 Writer Plugins: generate output in various formats as plugins to
 FizzBuzz. Sample writers have project names beginning with "Writer".
+
+In addition to the core projects mentioned above, this solution contains
+additional projects that illustrate other aspects of MEF.
+
+Gotcha1: shows alternative techniques for using MEF within static methods.
