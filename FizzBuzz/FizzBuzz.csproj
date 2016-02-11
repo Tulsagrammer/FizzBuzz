@@ -61,9 +61,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Engine\Engine.csproj">
-      <Project>{40a4cc49-4cdf-429f-b88b-53b5eb4a7639}</Project>
-      <Name>Engine</Name>
+    <ProjectReference Include="..\IEngine\IEngine.csproj">
+      <Project>{db851f1f-4dfa-4da9-a9d6-019b142d9f40}</Project>
+      <Name>IEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\IFizzBuzzAlgorithm\IFizzBuzzAlgorithm.csproj">
       <Project>{0366b755-b4cd-414e-8f19-2619b373b843}</Project>

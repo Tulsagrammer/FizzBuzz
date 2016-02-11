@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{40A4CC49-4CDF-429F-B88B-53B5EB4A7639}</ProjectGuid>
+    <ProjectGuid>{DB851F1F-4DFA-4DA9-A9D6-019B142D9F40}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FizzBuzz</RootNamespace>
-    <AssemblyName>Engine</AssemblyName>
+    <RootNamespace>IEngine</RootNamespace>
+    <AssemblyName>IEngine</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,14 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine.cs" />
+    <Compile Include="IEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IEngine\IEngine.csproj">
-      <Project>{db851f1f-4dfa-4da9-a9d6-019b142d9f40}</Project>
-      <Name>IEngine</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IFizzBuzzAlgorithm\IFizzBuzzAlgorithm.csproj">
       <Project>{0366b755-b4cd-414e-8f19-2619b373b843}</Project>
       <Name>IFizzBuzzAlgorithm</Name>
@@ -59,9 +55,6 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "$(SolutionDir)Plugins"</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -8,7 +8,9 @@ using System.Linq;
 
 namespace FizzBuzz
 {
-    public class Engine
+    //[Export(typeof(FizzBuzz.IEngine))]
+    [Export("Engine")]
+    public class Engine : IEngine
     {
         public IEnumerable<Lazy<IFizzBuzzAlgorithm, IFizzBuzzAlgorithmMetadata>> Algorithms { get; set; }
 

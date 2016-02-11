@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gotcha1", "Gotcha1\Gotcha1.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriterHtml", "WriterHtml\WriterHtml.csproj", "{F60244FE-315E-4DB7-A59E-20AD05FD9324}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IEngine", "IEngine\IEngine.csproj", "{DB851F1F-4DFA-4DA9-A9D6-019B142D9F40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,10 @@ Global
 		{F60244FE-315E-4DB7-A59E-20AD05FD9324}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F60244FE-315E-4DB7-A59E-20AD05FD9324}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F60244FE-315E-4DB7-A59E-20AD05FD9324}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB851F1F-4DFA-4DA9-A9D6-019B142D9F40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB851F1F-4DFA-4DA9-A9D6-019B142D9F40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB851F1F-4DFA-4DA9-A9D6-019B142D9F40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB851F1F-4DFA-4DA9-A9D6-019B142D9F40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

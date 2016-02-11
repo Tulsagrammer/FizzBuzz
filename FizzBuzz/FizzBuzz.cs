@@ -48,6 +48,10 @@ namespace FizzBuzz
 
     public class Program
     {
+        //[Import(typeof(IEngine))]
+        //public IEngine engine { get; set; }
+        [Import("Engine")]
+        public dynamic engine { get; set; }
         [ImportMany]
         IEnumerable<Lazy<IFizzBuzzAlgorithm, IFizzBuzzAlgorithmMetadata>> algorithms;
         [ImportMany]
@@ -81,7 +85,7 @@ namespace FizzBuzz
 
             try
             {
-                var engine = new Engine();
+                //var engine = new Engine();
                 var catalog = new AggregateCatalog();
                 catalog.Catalogs.Add(new AssemblyCatalog(typeof(FizzBuzz).Assembly));
                 catalog.Catalogs.Add(new DirectoryCatalog(pluginDir));
@@ -93,7 +97,8 @@ namespace FizzBuzz
 
                     // Invoke each writer object to produce some data!
                     foreach (Lazy<IFizzBuzzWriter, IFizzBuzzWriterMetadata> w in writers)
-                        w.Value.Run(upperLimit, maxLoops, engine.Run);
+                        //w.Value.Run(upperLimit, maxLoops, engine.Run);
+                        w.Value.Run(upperLimit, maxLoops, ((IEngine)engine).Run);
                 }
             }
             catch (Exception exception)
