@@ -93,7 +93,8 @@ namespace FizzBuzz
                 using (var container = new CompositionContainer(catalog))
                 {
                     container.ComposeParts(this);
-                    engine.Algorithms = algorithms;
+                    //engine.Algorithms = algorithms;
+                    ((IEngine)engine).Algorithms = algorithms;
 
                     // Invoke each writer object to produce some data!
                     foreach (Lazy<IFizzBuzzWriter, IFizzBuzzWriterMetadata> w in writers)
