@@ -16,11 +16,11 @@ namespace FizzBuzz
 
         public void Run(int upperLimit, int maxLoops, IFizzBuzzDelegate driver)
         {
-            List<Tuple<TimeSpan, string>> procTimes = new List<Tuple<TimeSpan, string>>();
+            var procTimes = new List<Tuple<TimeSpan, string>>();
 
             foreach (var a in Algorithms)
             {
-                var tag = a.Metadata.Description.ToString();
+                var tag = a.Metadata.Description;
                 driver.TestStart(tag);
                 var start = Process.GetCurrentProcess().UserProcessorTime;
                 for (var i = 0; i < maxLoops; i++)

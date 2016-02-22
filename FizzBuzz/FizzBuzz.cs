@@ -6,7 +6,7 @@ Given any number X, there are three possible values of X mod 3 and
 five possible values of X mod 5. This gives 15 possible combinations
 of the two. Three of these combinations indicate a number divisible
 by 3 but NOT 5; two of these combinations indicate a number
-divisible by 5 but NOT 3 and a single combination indicates a number
+divisible by 5 but NOT 3 and a single combination indicates a  number
 divisible by BOTH 3 and 5.
 
 Using this phenomena, we can easily construct a Fizz Buzz program
@@ -38,9 +38,9 @@ using System.Linq;
 
 namespace FizzBuzz
 {
-    class FizzBuzz
+    internal class FizzBuzz
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             new Program().Run(args);
         }
@@ -59,8 +59,6 @@ namespace FizzBuzz
 
         public void Run(string[] args)
         {
-            string pluginDir;
-
             #region Parameter validation and setup
             // Check for presence of command line parameters.
             if (!args.Any())
@@ -74,13 +72,9 @@ namespace FizzBuzz
                 return;
             }
 
-            if (args.Count() > 2)
-                pluginDir = args[2];
-            else
-                pluginDir = @"..\..\..\Plugins";
-
             var upperLimit = Convert.ToInt32(args[0]);
-            var maxLoops = Convert.ToInt32(args[1]);
+            var maxLoops   = Convert.ToInt32(args[1]);
+            var pluginDir  = args.Count() > 2 ? args[2] : @"..\..\..\Plugins";
             #endregion
 
             try
@@ -97,7 +91,7 @@ namespace FizzBuzz
                     ((IEngine)engine).Algorithms = algorithms;
 
                     // Invoke each writer object to produce some data!
-                    foreach (Lazy<IFizzBuzzWriter, IFizzBuzzWriterMetadata> w in writers)
+                    foreach (var w in writers)
                         //w.Value.Run(upperLimit, maxLoops, engine.Run);
                         w.Value.Run(upperLimit, maxLoops, ((IEngine)engine).Run);
                 }
@@ -110,9 +104,9 @@ namespace FizzBuzz
             Pause("");
         }
 
-        private static void Pause(string Message)
+        private static void Pause(string message)
         {
-            Console.Error.WriteLine(Message);
+            Console.Error.WriteLine(message);
             Console.Error.Write(@"Press any key to continue...");
             Console.ReadKey(true);
         }
