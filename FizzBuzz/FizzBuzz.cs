@@ -53,8 +53,6 @@ namespace FizzBuzz
         [Import("Engine")]
         public dynamic engine { get; set; }
         [ImportMany]
-        IEnumerable<Lazy<IFizzBuzzAlgorithm, IFizzBuzzAlgorithmMetadata>> algorithms;
-        [ImportMany]
         IEnumerable<Lazy<IFizzBuzzWriter, IFizzBuzzWriterMetadata>> writers;
 
         public void Run(string[] args)
@@ -79,7 +77,6 @@ namespace FizzBuzz
 
             try
             {
-                //var engine = new Engine();
                 var catalog = new AggregateCatalog();
                 catalog.Catalogs.Add(new AssemblyCatalog(typeof(FizzBuzz).Assembly));
                 catalog.Catalogs.Add(new DirectoryCatalog(pluginDir));
@@ -88,7 +85,7 @@ namespace FizzBuzz
                 {
                     container.ComposeParts(this);
                     //engine.Algorithms = algorithms;
-                    ((IEngine)engine).Algorithms = algorithms;
+                    ((IEngine) engine).Container = container;
 
                     // Invoke each writer object to produce some data!
                     foreach (var w in writers)

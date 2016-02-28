@@ -12,7 +12,11 @@ namespace FizzBuzz
     [Export("Engine")]
     public class Engine : IEngine
     {
-        public IEnumerable<Lazy<IFizzBuzzAlgorithm, IFizzBuzzAlgorithmMetadata>> Algorithms { get; set; }
+        [ImportMany]
+        IEnumerable<Lazy<IFizzBuzzAlgorithm, IFizzBuzzAlgorithmMetadata>> Algorithms;
+
+        public CompositionContainer Container { get; set; }
+
 
         public void Run(int upperLimit, int maxLoops, IFizzBuzzDelegate driver)
         {
