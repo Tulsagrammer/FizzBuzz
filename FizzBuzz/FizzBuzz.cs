@@ -83,9 +83,8 @@ namespace FizzBuzz
 
                 using (var container = new CompositionContainer(catalog))
                 {
+                    // Assemble the components!
                     container.ComposeParts(this);
-                    //engine.Algorithms = algorithms;
-                    ((IEngine) engine).Container = container;
 
                     // Invoke each writer object to produce some data!
                     foreach (var w in writers)
@@ -95,7 +94,7 @@ namespace FizzBuzz
             }
             catch (Exception exception)
             {
-                Pause(exception.ToString());
+                Console.Error.WriteLine(exception.ToString());
             }
 
             Pause("");
