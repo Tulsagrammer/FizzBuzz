@@ -15,7 +15,6 @@ namespace FizzBuzz
         [ImportMany]
         IEnumerable<Lazy<IFizzBuzzAlgorithm, IFizzBuzzAlgorithmMetadata>> Algorithms;
 
-
         public void Run(int upperLimit, int maxLoops, IFizzBuzzDelegate driver)
         {
             var procTimes = new List<Tuple<TimeSpan, string>>();

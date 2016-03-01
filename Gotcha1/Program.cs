@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Gotcha1
 {
     #region Gotcha: building CompositionContainer in a static method
-#if true
+#if false
     class Program
     {
         [ImportMany]
@@ -125,6 +125,52 @@ namespace Gotcha1
                         Console.WriteLine(w.Metadata.Description);
             }
             Utility.Pause("");
+        }
+    }
+#endif
+    #endregion
+
+    #region Incorrect access to multiple components
+#if true
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string pluginDir;
+
+            if (args.Any())
+                pluginDir = args[0];
+            else
+                pluginDir = @"..\..\..\Plugins";
+
+            var catalog = new AggregateCatalog();
+            catalog.Catalogs.Add(new AssemblyCatalog(typeof(Program).Assembly));
+            catalog.Catalogs.Add(new DirectoryCatalog(pluginDir));
+
+            var id = new ImportDefinitions();
+            using (var container = new CompositionContainer(catalog))
+            {
+                try
+                {
+                    container.ComposeParts(id);
+                    Console.WriteLine(@"id.Algorithms.Count: {0}", id.Algorithms.Count());
+                    if (id.Algorithm == null)
+                        Console.WriteLine(@"id.Algorithm was allocated as null!!!");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            Utility.Pause("");
+        }
+
+        public class ImportDefinitions
+        {
+            [Import(typeof(IFizzBuzzAlgorithm))]
+            public IFizzBuzzAlgorithm Algorithm { get; set; }
+            [ImportMany]
+            public IEnumerable<Lazy<IFizzBuzzAlgorithm, IFizzBuzzAlgorithmMetadata>> Algorithms { get; set; }
         }
     }
 #endif

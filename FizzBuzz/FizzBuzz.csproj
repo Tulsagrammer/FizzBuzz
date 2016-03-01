@@ -65,10 +65,6 @@
       <Project>{db851f1f-4dfa-4da9-a9d6-019b142d9f40}</Project>
       <Name>IEngine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IFizzBuzzAlgorithm\IFizzBuzzAlgorithm.csproj">
-      <Project>{0366b755-b4cd-414e-8f19-2619b373b843}</Project>
-      <Name>IFizzBuzzAlgorithm</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IFizzBuzzDelegate\IFizzBuzzDelegate.csproj">
       <Project>{c1cef614-302c-47b7-82ba-d3e54e1338e0}</Project>
       <Name>IFizzBuzzDelegate</Name>
