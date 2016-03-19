@@ -34,14 +34,16 @@ namespace Gotcha1
             using (var container = new CompositionContainer(catalog))
             {
                 container.ComposeParts(container);
+                Console.WriteLine();
                 Console.WriteLine("Algorithm plugins:");
                 if (algorithms != null)
                     foreach (var a in algorithms)
-                        Console.WriteLine(a.Metadata.Description);
+                        Console.WriteLine(@"  {0}", a.Metadata.Description);
+                Console.WriteLine();
                 Console.WriteLine("Writer plugins:");
                 if (writers != null)
                     foreach (var w in writers)
-                        Console.WriteLine(w.Metadata.Description);
+                        Console.WriteLine(@"  {0}", w.Metadata.Description);
             }
             Utility.Pause("");
         }
@@ -70,14 +72,16 @@ namespace Gotcha1
             using (var container = new CompositionContainer(catalog))
             {
                 container.ComposeParts(id);
+                Console.WriteLine();
                 Console.WriteLine("Algorithm plugins:");
                 if (id.algorithms != null)
                     foreach (var a in id.algorithms)
-                        Console.WriteLine(a.Metadata.Description);
+                        Console.WriteLine(@"  {0}", a.Metadata.Description);
+                Console.WriteLine();
                 Console.WriteLine("Writer plugins:");
                 if (id.writers != null)
                     foreach (var w in id.writers)
-                        Console.WriteLine(w.Metadata.Description);
+                        Console.WriteLine(@"  {0}", w.Metadata.Description);
             }
             Utility.Pause("");
         }
@@ -115,14 +119,16 @@ namespace Gotcha1
                 container.ComposeParts(container);
                 var algorithms = container.GetExports<IFizzBuzzAlgorithm, IFizzBuzzAlgorithmMetadata>();
                 var writers = container.GetExports<IFizzBuzzWriter, IFizzBuzzWriterMetadata>();
+                Console.WriteLine();
                 Console.WriteLine("Algorithm plugins:");
                 if (algorithms != null)
                     foreach (var a in algorithms)
-                        Console.WriteLine(a.Metadata.Description);
+                        Console.WriteLine(@"  {0}", a.Metadata.Description);
+                Console.WriteLine();
                 Console.WriteLine("Writer plugins:");
                 if (writers != null)
                     foreach (var w in writers)
-                        Console.WriteLine(w.Metadata.Description);
+                        Console.WriteLine(@"  {0}", w.Metadata.Description);
             }
             Utility.Pause("");
         }
