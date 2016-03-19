@@ -4,8 +4,6 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using FizzBuzz;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gotcha1
 {
@@ -184,9 +182,9 @@ namespace Gotcha1
 
     class Utility
     {
-        public static void Pause(string Message)
+        public static void Pause(string message)
         {
-            Console.Error.WriteLine(Message);
+            Console.Error.WriteLine(message);
             Console.Error.Write(@"Press any key to continue...");
             Console.ReadKey(true);
         }
