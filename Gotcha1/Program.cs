@@ -34,14 +34,14 @@ namespace Gotcha1
             using (var container = new CompositionContainer(catalog))
             {
                 container.ComposeParts(container);
-                Console.WriteLine("Algorithm plugins:");
+                Console.WriteLine("\nAlgorithm plugins:");
                 if (algorithms != null)
                     foreach (var a in algorithms)
-                        Console.WriteLine(a.Metadata.Description);
-                Console.WriteLine("Writer plugins:");
+                        Console.WriteLine(@"  {0}", a.Metadata.Description);
+                Console.WriteLine("\nWriter plugins:");
                 if (writers != null)
                     foreach (var w in writers)
-                        Console.WriteLine(w.Metadata.Description);
+                        Console.WriteLine(@"  {0}", w.Metadata.Description);
             }
             Utility.Pause("");
         }
@@ -70,14 +70,14 @@ namespace Gotcha1
             using (var container = new CompositionContainer(catalog))
             {
                 container.ComposeParts(id);
-                Console.WriteLine("Algorithm plugins:");
+                Console.WriteLine("\nAlgorithm plugins:");
                 if (id.algorithms != null)
                     foreach (var a in id.algorithms)
-                        Console.WriteLine(a.Metadata.Description);
-                Console.WriteLine("Writer plugins:");
+                        Console.WriteLine(@"  {0}", a.Metadata.Description);
+                Console.WriteLine("\nWriter plugins:");
                 if (id.writers != null)
                     foreach (var w in id.writers)
-                        Console.WriteLine(w.Metadata.Description);
+                        Console.WriteLine(@"  {0}", w.Metadata.Description);
             }
             Utility.Pause("");
         }
@@ -94,7 +94,7 @@ namespace Gotcha1
     #endregion
 
     #region Solution #2: explicit collection of desired objects
-#if false
+#if true
     class Program
     {
         static void Main(string[] args)
@@ -115,14 +115,14 @@ namespace Gotcha1
                 container.ComposeParts(container);
                 var algorithms = container.GetExports<IFizzBuzzAlgorithm, IFizzBuzzAlgorithmMetadata>();
                 var writers = container.GetExports<IFizzBuzzWriter, IFizzBuzzWriterMetadata>();
-                Console.WriteLine("Algorithm plugins:");
+                Console.WriteLine("\nAlgorithm plugins:");
                 if (algorithms != null)
                     foreach (var a in algorithms)
-                        Console.WriteLine(a.Metadata.Description);
-                Console.WriteLine("Writer plugins:");
+                        Console.WriteLine(@"  {0}", a.Metadata.Description);
+                Console.WriteLine("\nWriter plugins:");
                 if (writers != null)
                     foreach (var w in writers)
-                        Console.WriteLine(w.Metadata.Description);
+                        Console.WriteLine(@"  {0}", w.Metadata.Description);
             }
             Utility.Pause("");
         }
@@ -131,7 +131,7 @@ namespace Gotcha1
     #endregion
 
     #region Incorrect access to multiple components
-#if true
+#if false
     class Program
     {
         static void Main(string[] args)
