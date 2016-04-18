@@ -4,11 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-<<<<<<< HEAD
-    <ProjectGuid>{E4E4452D-0783-43EF-948A-C44F9F971BDD}</ProjectGuid>
-=======
     <ProjectGuid>{FA436D12-786B-41CF-9DD4-7EDC77E860CE}</ProjectGuid>
->>>>>>> d126cddacb5887342473f4ea125d19f5937e247d
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WriterDummy</RootNamespace>
@@ -64,20 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="DummyWriter.cs" />
-=======
     <Compile Include="DummyOutput.cs" />
->>>>>>> d126cddacb5887342473f4ea125d19f5937e247d
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IFizzBuzzDelegate\IFizzBuzzDelegate.csproj">
-<<<<<<< HEAD
-      <Project>{c1cef614-302c-47b7-82ba-d3e54e1338e0}</Project>
-=======
       <Project>{C1CEF614-302C-47B7-82BA-D3E54E1338E0}</Project>
->>>>>>> d126cddacb5887342473f4ea125d19f5937e247d
       <Name>IFizzBuzzDelegate</Name>
     </ProjectReference>
     <ProjectReference Include="..\IFizzBuzzWriter\IFizzBuzzWriter.csproj">

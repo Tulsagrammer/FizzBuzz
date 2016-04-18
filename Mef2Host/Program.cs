@@ -16,18 +16,15 @@ using System.Composition;
 
 namespace Mef2Host
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
             string pluginDir;
 
-            if (args.Any())
-                pluginDir = args[0];
-            else
-                pluginDir = @"..\..\..\Plugins";
+            pluginDir = args.Any() ? args[0] : @"..\..\..\Plugins";
 
-#if false
+#if true
             var partConfig = new ContainerConfiguration()
                     .WithAssembly(Assembly.GetExecutingAssembly());
             var compositionHost = partConfig.CreateContainer();
@@ -42,7 +39,7 @@ namespace Mef2Host
                 Console.WriteLine(@"{0,3} Writer plugins", writers.Count());
 #endif
 
-#if true
+#if false
             var partConfig = new ContainerConfiguration()
                     .WithAssembly(Assembly.GetExecutingAssembly());
             var compositionHost = partConfig.CreateContainer();
@@ -62,7 +59,7 @@ namespace Mef2Host
         }
     }
 
-    class Utility
+    internal class Utility
     {
         public static void Pause(string Message)
         {
