@@ -4,19 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-<<<<<<< HEAD
-    <ProjectGuid>{E4E4452D-0783-43EF-948A-C44F9F971BDD}</ProjectGuid>
-=======
-    <ProjectGuid>{FA436D12-786B-41CF-9DD4-7EDC77E860CE}</ProjectGuid>
->>>>>>> d126cddacb5887342473f4ea125d19f5937e247d
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{21F984B8-5660-49B1-86EC-1A8FB87BCCF5}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WriterDummy</RootNamespace>
-    <AssemblyName>WriterDummy</AssemblyName>
+    <RootNamespace>Mef2Host</RootNamespace>
+    <AssemblyName>Mef2Host</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -64,20 +63,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="DummyWriter.cs" />
-=======
     <Compile Include="DummyOutput.cs" />
->>>>>>> d126cddacb5887342473f4ea125d19f5937e247d
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IFizzBuzzAlgorithm\IFizzBuzzAlgorithm.csproj">
+      <Project>{0366b755-b4cd-414e-8f19-2619b373b843}</Project>
+      <Name>IFizzBuzzAlgorithm</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IFizzBuzzDelegate\IFizzBuzzDelegate.csproj">
-<<<<<<< HEAD
-      <Project>{c1cef614-302c-47b7-82ba-d3e54e1338e0}</Project>
-=======
       <Project>{C1CEF614-302C-47B7-82BA-D3E54E1338E0}</Project>
->>>>>>> d126cddacb5887342473f4ea125d19f5937e247d
       <Name>IFizzBuzzDelegate</Name>
     </ProjectReference>
     <ProjectReference Include="..\IFizzBuzzWriter\IFizzBuzzWriter.csproj">
@@ -85,13 +85,7 @@
       <Name>IFizzBuzzWriter</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "$(SolutionDir)Plugins"</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

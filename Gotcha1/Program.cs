@@ -96,7 +96,7 @@ namespace Gotcha1
     #endregion
 
     #region Solution #2: explicit collection of desired objects
-#if false
+#if true
     class Program
     {
         static void Main(string[] args)
@@ -135,7 +135,7 @@ namespace Gotcha1
     #endregion
 
     #region Incorrect access to multiple components
-#if true
+#if false
     class Program
     {
         static void Main(string[] args)
