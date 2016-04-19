@@ -55,6 +55,8 @@ namespace FizzBuzz
         [ImportMany]
         IEnumerable<Lazy<IFizzBuzzWriter, IFizzBuzzWriterMetadata>> writers;
 
+        [Export] private string _message;
+
         public void Run(string[] args)
         {
             #region Parameter validation and setup
@@ -74,6 +76,8 @@ namespace FizzBuzz
             var maxLoops   = Convert.ToInt32(args[1]);
             var pluginDir  = args.Count() > 2 ? args[2] : @"..\..\..\Plugins";
             #endregion
+
+            _message = @"Eric was here!";
 
             try
             {

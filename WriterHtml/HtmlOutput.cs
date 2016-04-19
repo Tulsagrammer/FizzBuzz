@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.ComponentModel.Composition;
 
 
@@ -10,6 +11,14 @@ namespace FizzBuzz
     {
         private int _upperLimit;
         private int _maxLoops;
+
+        [ImportingConstructor]
+        public HtmlOutput(string message)
+        {
+            var msg = string.Format(@"HtmlOutput constructor says: {0}", message);
+            Trace.WriteLine(msg);
+            Console.Error.WriteLine(msg);
+        }
 
         public void Run(int upperLimit, int maxLoops, Action<int, int, IFizzBuzzDelegate> run)
         {
