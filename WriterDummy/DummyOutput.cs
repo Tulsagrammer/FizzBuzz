@@ -9,7 +9,7 @@ using FizzBuzz;
 namespace WriterDummy
 {
     [Export(typeof(IFizzBuzzWriter))]
-    [ExportMetadata("Description", "Stand-Alone Dummy Writer")]
+    [ExportMetadata("Description", "Plug-in Dummy Writer")]
     public class DummyOutput : IFizzBuzzWriter
     {
         public void ResultsFinish()

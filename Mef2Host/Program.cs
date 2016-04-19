@@ -6,54 +6,54 @@
 
 using System;
 using System.Collections.Generic;
+using System.Composition;
 using System.Composition.Hosting;
+using System.IO;
 using System.Reflection;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FizzBuzz;
-using System.Composition;
 
 namespace Mef2Host
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            string pluginDir;
+            var pluginDir = args.Any() ? args[0] : @"..\..\..\Plugins";
 
-            pluginDir = args.Any() ? args[0] : @"..\..\..\Plugins";
-
-#if true
+            // Add ourself to the ContainerConfiguration because we might have
+            // embedded components.
             var partConfig = new ContainerConfiguration()
                     .WithAssembly(Assembly.GetExecutingAssembly());
+
+            // Now add in assemblies in the plugins directory.
+            var dInfo = new DirectoryInfo(pluginDir);
+            var files = dInfo.GetFiles("*.dll");
+            foreach (var file in files)
+                partConfig.WithAssembly(Assembly.LoadFile(file.FullName));
+
+            object description;
             var compositionHost = partConfig.CreateContainer();
-            var algorithms = compositionHost.GetExports<IFizzBuzzAlgorithm>();
-            var writers = compositionHost.GetExports<IFizzBuzzWriter>();
-
-            Console.WriteLine("\nAlgorithm plugins:");
-            if (algorithms != null)
-                Console.WriteLine(@"{0,3} Algorithm plugins", algorithms.Count());
-            Console.WriteLine("\nWriter plugins:");
-            if (writers != null)
-                Console.WriteLine(@"{0,3} Writer plugins", writers.Count());
-#endif
-
-#if false
-            var partConfig = new ContainerConfiguration()
-                    .WithAssembly(Assembly.GetExecutingAssembly());
-            var compositionHost = partConfig.CreateContainer();
-            var algorithms = compositionHost.GetExports<ExportFactory<IFizzBuzzAlgorithm, IFizzBuzzAlgorithmMetadata>>();
-            var writers = compositionHost.GetExports<IFizzBuzzWriter>();
-
-            Console.WriteLine("\nAlgorithm plugins:");
+            var algorithms = compositionHost.GetExports
+                    <ExportFactory<IFizzBuzzAlgorithm, IDictionary<string, object>>>();
+            var writers = compositionHost.GetExports
+                    <ExportFactory<IFizzBuzzWriter, IDictionary<string, object>>>();
+            Console.WriteLine();
+            Console.WriteLine("Algorithm plugins:");
             if (algorithms != null)
                 foreach (var a in algorithms)
-                    Console.WriteLine(@"  {0}", a.Metadata.Description);
-            Console.WriteLine("\nWriter plugins:");
+                {
+                    a.Metadata.TryGetValue("Description", out description);
+                    Console.WriteLine(@"  {0}", description);
+                }
+            Console.WriteLine();
+            Console.WriteLine("Writer plugins:");
             if (writers != null)
-                Console.WriteLine(@"{0,3} Writer plugins", writers.Count());
-#endif
+                foreach (var w in writers)
+                {
+                    w.Metadata.TryGetValue("Description", out description);
+                    Console.WriteLine(@"  {0}", description);
+                }
 
             Utility.Pause("");
         }
@@ -61,9 +61,9 @@ namespace Mef2Host
 
     internal class Utility
     {
-        public static void Pause(string Message)
+        public static void Pause(string message)
         {
-            Console.Error.WriteLine(Message);
+            Console.Error.WriteLine(message);
             Console.Error.Write(@"Press any key to continue...");
             Console.ReadKey(true);
         }
